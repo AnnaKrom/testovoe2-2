@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>View Image</h2>
+    <div>
+        <img src="{{ image.image.url }}" alt="Uploaded Image">
+        <p>ID: {{ image.id }}</p>
+    </div>
+    <a href="{% url 'image_upload' %}"> Back to Upload </a>    
+{% endblock %}
