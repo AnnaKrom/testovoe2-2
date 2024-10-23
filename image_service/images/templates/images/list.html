@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Просмотр загруженных изображений:</h3>
+    <div>
+        {% for image in images %}
+            <div>
+                <a href="{% url 'image_view' image.id %}">
+                    <img src="{{ image.image.url }}" alt="Uploaded Image">
+                </a>
+                <p>ID: {{ image.id }}</p>
+                <a href="{% url 'image_delete' image.id %}">
+                    Удалить изображение
+                </a>    
+                
+            </div>
+        {% empty %}
+            <p>Изображения еще не загружены.</p>
+        {% endfor %}
+        </div> 
+        
+        <a href="{% url 'image_upload' %}">Загрузить ещё изображения</a>
+{% endblock %}                         

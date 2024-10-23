@@ -7,12 +7,17 @@ def image_upload(request):
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('image_upload')
+            return redirect('image_list')
+            
     else:
         form = ImageForm()
 
+    return render(request, 'images/upload.html', {'form': form})
+
+def image_list(request):
     images = Image.objects.all()
-    return render(request, 'images/upload.html', {'form': form, 'images': images})
+    return render(request, 'images/list.html', {'images': images})
+
 
 def image_view(request, image_id):
     image = get_object_or_404(Image, id=image_id)
@@ -21,4 +26,4 @@ def image_view(request, image_id):
 def image_delete(request, image_id):
     image = get_object_or_404(Image, id=image_id)
     image.delete()
-    return redirect('image_upload')
+    return redirect('image_list')

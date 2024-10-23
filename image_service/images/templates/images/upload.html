@@ -8,20 +8,6 @@
         <button type="submit">Загрузить</button>
     </form>
 
-    <h3>Просмотр загруженных изображений:</h3>
-    <div>
-        {% for image in images %}
-            <div>
-                <a href="{% url 'image_view' image.id %}">
-                    <img src="{{ image.image.url }}" alt="Uploaded Image">
-                </a>
-                <a href="{% url 'image_delete' image.id %}">
-                    Удалить изображение
-                </a>    
-                <p>ID: {{ image.id }}</p>
-            </div>
-        {% empty %}
-            <p>Изображения еще не загружены.</p>
-        {% endfor %}
-        </div>  
-{% endblock %}                           
+    <a href="{% url 'image_list' %}">Просмотреть все изображения</a>
+{% endblock %} 
+                          

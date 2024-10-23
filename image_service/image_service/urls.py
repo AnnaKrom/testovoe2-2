@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.urls import path, include
 
 urlpatterns = [
-    path('images/', include('images.urls')),
+    path('', include('images.urls')),
 ]
 
 if settings.DEBUG:
